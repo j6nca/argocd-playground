@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: deployment-root-test
+  name: deployment-root-prod
   namespace: argocd
   labels:
-    rm_cicd_applicationset: test
+    rm_cicd_applicationset: prod
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -15,7 +15,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-test.yaml
+        - values-prod.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
