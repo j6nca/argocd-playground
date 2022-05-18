@@ -62,3 +62,6 @@ spec:
         repoURL: https://github.com/jngbot/argocd-playground.git
         targetRevision: master
         path: applications/guest-book
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: default
