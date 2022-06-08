@@ -12,14 +12,11 @@ spec:
       - name: slack-notification
         image: curlimages/curl
         command:
-        - name: slack-notification
-          image: curlimages/curl
-          command:
-            - "curl"
-            - "-X"
-            - "POST"
-            - "--data-urlencode"
-            - "payload={\"channel\": \"#alerts-test\", \"username\": \"hello\", \"text\": \"App Sync succeeded\", \"icon_emoji\": \":ghost:\"}"
-            - "https://hooks.slack.com/services/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"
+          - "curl"
+          - "-X"
+          - "POST"
+          - "--data-urlencode"
+          - "payload={\"channel\": \"#somechannel\", \"username\": \"hello\", \"text\": \"App Sync succeeded\", \"icon_emoji\": \":ghost:\"}"
+          - "https://hooks.slack.com/services/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"
       restartPolicy: Never
   backoffLimit: 2
