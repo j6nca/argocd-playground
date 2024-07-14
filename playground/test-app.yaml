@@ -16,6 +16,21 @@ spec:
     # helm:
     #   valueFiles:
     #     - values-prod.yaml
+    kustomize:
+      patches:
+      - target:
+          kind: Deployment
+          name: test-app
+        patch: |
+          - op: add
+            path: metadata/labels
+            labels:
+            - pairs:
+                my_test_label1: argocd
+                my_test_label2: main
+                my_test_label3: test-app
+              includeSelectors: false
+              includeTemplates: true
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: playground
