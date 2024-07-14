@@ -3,8 +3,8 @@ kind: Application
 metadata:
   name: test-app
   namespace: argocd
-  labels:
-    rm_cicd_applicationset: prod
+  # labels:
+  #   environment: prod
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -18,4 +18,4 @@ spec:
     #     - values-prod.yaml
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: playground
