@@ -16,7 +16,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: apps
+  project: default
   source:
     repoURL: 'https://github.com/j6nca/argocd-playground'
     path: gitops/namespaces/{{ $namespace }}
