@@ -5,7 +5,7 @@
 {{ $_ := set $processedDict $namespaces "true" }}
 {{- end }}
 {{- end }}
-{{ $processedDict := omit $processedDict "templates" "namespaces" }}
+{{ $processedDict := omit $processedDict "templates" "namespaces" "tests" }}
 {{- range $namespace, $a := $processedDict }}
 ---
 apiVersion: argoproj.io/v1alpha1
