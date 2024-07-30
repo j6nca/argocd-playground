@@ -1,0 +1,33 @@
+{{- $processedDict := dict -}}
+{{- range $path, $p := .Files.Glob "namespaces/**" }}
+{{- $namespaces := base (dir $path) }}
+{{- if not (hasKey $processedDict $namespaces) -}}
+{{ $_ := set $processedDict $namespaces "true" }}
+{{- end }}
+{{- end }}
+{{ $processedDict := omit $processedDict "templates" "namespaces" }}
+{{- range $namespace, $a := $processedDict }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $namespace }}
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: apps
+  source:
+    repoURL: 'https://github.com/j6nca/argocd-playground'
+    path: gitops/namespaces/{{ $namespace }}
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  syncPolicy:
+    automated: {}
+  revisionHistoryLimit: 3
+{{- end }}
