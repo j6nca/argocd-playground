@@ -16,4 +16,3 @@ clusters:
     name: prod
     region: us-east-1
     endpoint: "https://kubernetes.default.svc"
-
