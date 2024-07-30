@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{.Chart.Name}}
+  annotations:
+    linkerd.io/inject: enabled
+  labels:
+    kubernetes.io/metadata.name: {{.Chart.Name}}
+    linkerd.io/inject: enabled

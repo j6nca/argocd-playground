@@ -1,0 +1,19 @@
+aws_accounts:
+  dev: "1"
+  prod: "2"
+  stage: "3"
+
+clusters:
+  dev:
+    name: dev
+    region: us-east-1
+    endpoint: "https://kubernetes.default.svc"
+  infra:
+    name: infra
+    region: us-east-1
+    endpoint: "https://kubernetes.default.svc"
+  prod:
+    name: prod
+    region: us-east-1
+    endpoint: "https://kubernetes.default.svc"
+
